@@ -1,12 +1,13 @@
+import React from "react";
+import { Box } from "@chakra-ui/react";
 import "./App.css";
-import {
-  Box,
-} from "@chakra-ui/react";
+
+import Landing from "./components/sections/landing";
 
 function App() {
   return (
     <Box>
-      Fresh Meal Plan Landing
+      <Landing />
     </Box>
   );
 }
