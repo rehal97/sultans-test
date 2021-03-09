@@ -20,10 +20,10 @@ const theme = extendTheme({
 });
 
 ReactDOM.render(
-  <ChakraProvider>
-    <Router>
+  <Router>
+    <ChakraProvider theme={theme}>
       <App />
-    </Router>
-  </ChakraProvider>,
+    </ChakraProvider>
+  </Router>,
   document.getElementById("root")
 );
