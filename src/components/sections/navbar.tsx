@@ -1,40 +1,45 @@
 import React from "react";
-import {
-  Box,
-  Button,
-  ButtonGroup,
-  Center,
-  Flex,
-  Image,
-  Heading,
-  Text,
-  Menu,
-} from "@chakra-ui/react";
+import { ButtonGroup, Center, Flex, Image, Link } from "@chakra-ui/react";
 
-const MenuItem = ({ children }) => (
-  <ButtonGroup variant="link" mx="5">
-    <Button color="#EBEBE7">{children}</Button>
-  </ButtonGroup>
-);
+const MenuItem = (props) => {
+  const { children, itemColor, link } = props;
+  console.log(itemColor);
+  return (
+    <ButtonGroup variant="link" mx="5">
+      <Link
+        href={link}
+        fontWeight="semibold"
+        color={itemColor ? itemColor : "primary.700"}
+      >
+        {children}
+      </Link>
+    </ButtonGroup>
+  );
+};
 
-const NavBar = () => {
+const NavBar = (props) => {
+  const { itemColor } = props;
   return (
     <Flex py="3">
       {/* logo */}
       <Center>
-        <Image w="150px" src="/logo.png" alt="Fresh Meal Plan" />
+        <Link href="/">
+          <Image w="150px" src="/logo.png" alt="Fresh Meal Plan" />{" "}
+        </Link>
       </Center>
 
       {/* menu items */}
       <Center mx="auto">
-        <MenuItem>Plans</MenuItem>
-        <MenuItem>Menu</MenuItem>
-        <MenuItem>How It Works</MenuItem>
+        <MenuItem itemColor={itemColor}>Plans</MenuItem>
+        <MenuItem itemColor={itemColor} link="/menu">
+          Menu
+        </MenuItem>
+        <MenuItem itemColor={itemColor}>How It Works</MenuItem>
       </Center>
 
       {/* create account etc */}
       <Center>
-        <MenuItem>Login</MenuItem>
+        <MenuItem itemColor={itemColor}>Login</MenuItem>
       </Center>
     </Flex>
   );
