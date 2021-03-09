@@ -9,6 +9,7 @@ import {
 } from "@chakra-ui/react";
 
 import NavBar from "./navbar";
+import Layout from "../layout/layout";
 
 const Landing = () => {
   return (
@@ -18,8 +19,8 @@ const Landing = () => {
       bgSize="cover"
       h="100vh"
     >
-      <Box w="65%" mx="auto">
-        <NavBar />
+      <Layout>
+        <NavBar itemColor={"white"} />
 
         <Box mt="10%" w="40%">
           <Heading color="#EBEBE7">
@@ -38,11 +39,11 @@ const Landing = () => {
           </FormLabel>
           <Input backgroundColor="white" type="email" placeholder="E-mail" />
 
-          <Button width="100%" colorScheme="teal" mt="3">
+          <Button width="100%" colorScheme="primary" mt="3">
             Get Started
           </Button>
         </FormControl>
-      </Box>
+      </Layout>
     </Box>
   );
 };
