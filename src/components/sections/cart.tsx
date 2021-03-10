@@ -1,5 +1,5 @@
 import React from "react";
-import { Badge, Box, Image } from "@chakra-ui/react";
+import { Box } from "@chakra-ui/react";
 import CartCard from "./cartCard";
 
 const Cart = () => {

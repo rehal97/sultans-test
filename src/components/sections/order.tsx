@@ -65,7 +65,7 @@ const Order = () => {
 
   const cartSubtotal = useMemo(() => {
     let subtotal = 0;
-    for (const [key, value] of Object.entries(cart)) {
+    for (const [key] of Object.entries(cart)) {
       const itemPrice = +findItemById(+key).price;
       const quantity = +cart[key];
       subtotal = subtotal + itemPrice * quantity;
@@ -93,8 +93,9 @@ const Order = () => {
           />
         );
       }
+      return null;
     });
-  }, [cart, incrementCartItem, decrementCartItem]);
+  }, [cart, incrementCartItem, decrementCartItem, removeCartItem]);
 
   const renderCards = () => {
     const items = ItemData.products;
