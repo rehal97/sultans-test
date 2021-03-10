@@ -3,7 +3,6 @@ import { ButtonGroup, Center, Flex, Image, Link } from "@chakra-ui/react";
 
 const MenuItem = (props) => {
   const { children, itemColor, link } = props;
-  console.log(itemColor);
   return (
     <ButtonGroup variant="link" mx="5">
       <Link

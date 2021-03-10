@@ -1,3 +1,4 @@
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 import {
   Box,
   Button,
@@ -6,7 +7,6 @@ import {
   SimpleGrid,
   Text,
 } from "@chakra-ui/react";
-import React, { useCallback, useEffect, useMemo, useState } from "react";
 
 import Card from "../layout/card";
 import Layout from "../layout/layout";
@@ -30,7 +30,6 @@ const Order = () => {
   const [isOrderable, setIsOrderable] = useState(false);
 
   useEffect(() => {
-    console.log(cart);
     setIsOrderable(Object.keys(cart).length === 0 ? true : false);
   }, [cart]);
 
