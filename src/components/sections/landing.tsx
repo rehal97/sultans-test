@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import {
   Box,
   FormLabel,
@@ -33,13 +33,33 @@ const initalErrorState = {
 
 const Landing = (props) => {
   const [formErrors, setFormErrors] = useState(initalErrorState);
+  const toast = useToast();
+
+  const validationAlert = useCallback(() => {
+    let descString = "";
+    if (formErrors.zipcode.error && formErrors.email.error) {
+      descString = "Please enter a valid zipcode and email address";
+    } else if (formErrors.zipcode.error) {
+      descString = formErrors.zipcode.message;
+    } else if (formErrors.email.error) {
+      descString = formErrors.email.message;
+    }
+
+    return toast({
+      title: "Sign Up Error.",
+      description: descString,
+      status: "error",
+      duration: 5000,
+      isClosable: true,
+    });
+  }, [formErrors, toast]);
 
   useEffect(() => {
     if (formErrors.zipcode.error || formErrors.email.error) {
       validationAlert();
       setFormErrors(initalErrorState);
     }
-  }, [formErrors]);
+  }, [formErrors, validationAlert]);
 
   const validateZipcode = (zipcode: string) => {
     const zipcodeRegex = /(^\d{5}$)|(^\d{5}-\d{4}$)/;
@@ -78,27 +98,6 @@ const Landing = (props) => {
     if (!updatedErrors.zipcode.error && !updatedErrors.email.error) {
       props.history.push("/menu");
     }
-  };
-
-  const toast = useToast();
-
-  const validationAlert = () => {
-    let descString = "";
-    if (formErrors.zipcode.error && formErrors.email.error) {
-      descString = "Please enter a valid zipcode and email address";
-    } else if (formErrors.zipcode.error) {
-      descString = formErrors.zipcode.message;
-    } else if (formErrors.email.error) {
-      descString = formErrors.email.message;
-    }
-
-    return toast({
-      title: "Sign Up Error.",
-      description: descString,
-      status: "error",
-      duration: 5000,
-      isClosable: true,
-    });
   };
 
   return (

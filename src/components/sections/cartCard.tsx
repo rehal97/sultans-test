@@ -3,14 +3,12 @@ import {
   Flex,
   HStack,
   Button,
-  Box,
   Input,
   Image,
   Stack,
   Text,
   VStack,
 } from "@chakra-ui/react";
-import { SmallCloseIcon } from "@chakra-ui/icons";
 import comingSoonImage from "../../imageComingSoon.jpg";
 
 const CartCard = (props) => {
